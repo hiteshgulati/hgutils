@@ -20,24 +20,24 @@ Import `hgutils` in the python project and initiate `timer` class by assigning i
 
 ```
 import hgutils
-hgt = hgutils.timer("My Revolutionary Project")
+stopwatch = hgutils.timer("My Revolutionary Project")
 ```
 
 Initiate the a new timer by calling `start` function and passing a name in argument. The new initiated timer will be child to current timer, which means current timer will continue to run and a new sub timer will be initiated.
 
 ```
-hgt.start('New Timer')
+stopwatch.start('New Timer')
 ```
 
 To stop or end current timer simply call `stop` function. This function will end current timer, any parent timer(s) will keep on running. To end stop parent timer call the stop function again.
 
 ```
-hgt.stop()
+stopwatch.stop()
 ```
 
 To get status of timers use `print` function. 
 ```
-hgt.print()
+stopwatch.print()
 ```
 
 `print` functions have following arguments to fine tune the required details:
@@ -49,13 +49,13 @@ hgt.print()
 
 Status of timer can also be printed while stoping the timer by passing argument `print=True` in `stop` function.
 ```
-hgt.stop(print=True,verbose=1)
+stopwatch.stop(print=True,verbose=1)
 ```
 
 To reset the timer use `reset` function. This will delete all existing timers and initiate a new timer for project.
 
 ```
-hgt.reset()
+stopwatch.reset()
 ```
 
 #### Examples
@@ -67,20 +67,20 @@ import hgutils
 import time
 
 print("Using timer utility available in hgutils")
-hgt = hgdatetime.timer("hgutils timer sample project")
+stopwatch = hgdatetime.timer("hgutils timer sample project")
 time.sleep(2)
-hgt.start("Top Level Timer")
+stopwatch.start("Top Level Timer")
 for i in range(4):
-    hgt.start("i="+str(i))
+    stopwatch.start("i="+str(i))
     time.sleep(1)    
     if i==2:
         for j in range(5):
-            hgt.start("j="+str(j))
+            stopwatch.start("j="+str(j))
             time.sleep(.04)
-            hgt.stop(print=True,verbose=1)
-    hgt.stop(print=True,verbose=1)
-hgt.stop(print=True,verbose=1)
-hgt.print(verbose=2)
+            stopwatch.stop(print=True,verbose=1)
+    stopwatch.stop(print=True,verbose=1)
+stopwatch.stop(print=True,verbose=1)
+stopwatch.print(verbose=2)
 ```
 
 **Output**
