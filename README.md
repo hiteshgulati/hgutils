@@ -67,7 +67,7 @@ import hgutils
 import time
 
 print("Using timer utility available in hgutils")
-stopwatch = hgdatetime.timer("hgutils timer sample project")
+stopwatch = hgutils.timer("hgutils timer sample project")
 time.sleep(2)
 stopwatch.start("Top Level Timer")
 for i in range(4):
