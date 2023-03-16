@@ -5,11 +5,13 @@
 ## Current Features
 
 * Timer - A python class to measure and print execution time of python code running over loops and in series.
+* Debugger - A python class to add print and or executable statements within the code and execute only if debugger mode is on.
+* Currency formatter - A python function to convert numeric vales to currency format with 100/1000 comma separator
 
-## Timer
+# Timer
 This is a python class built to measure the execution time of python script. 
 
-#### Usage
+## Usage
 Install `hgutils` to begin using timer class
 
 ```
@@ -58,7 +60,7 @@ To reset the timer use `reset` function. This will delete all existing timers an
 stopwatch.reset()
 ```
 
-#### Examples
+## Examples
 
 Here's a sample python project implemented using timer utility.
 
@@ -119,7 +121,44 @@ Using timer utility available in hgutils
 		 i=3 - 1.01 seconds
 ```
 
-## Authors
+# Debugger
+This is A python class to add print and or executable statements within the code and execute only if debugger mode is on.
+
+## Usage
+Install `hgutils` to begin using timer class
+
+```
+$ pip install hgutils
+```
+
+Import `hgutils` in the python project and initiate `debugger` class by assigning it to a variable while passing the project name in argument.
+
+```
+import hgutils
+dbug = hgutils.debugger("My Revolutionary Project's Debugger")
+```
+
+Set debugging mode ON by calling `debugging_on` function and turn it OFF by calling `debugging_off` function. By default debugging mode is OFF.
+
+```
+dbug.debugging_on()
+dbug.debugging_off()
+```
+
+Use `execute()` function to add printable / executable statements. These will be active only when debugger mode is ON. 
+
+```
+dbug.execute(title='Statement Title', print='This will be printed if debugger mode is ON')
+```
+`execute` functions have following arguments to be used as per requirements:
+* title - *title for current execution* Default - *None*. This is the first line which will be printed when statement is executed in debugger mode ON. If *None* nothing will be printed.
+* print - *Statement to be printed* Default - *None*. Statement which will be printed after printing title.
+* execute - *function to be executed* Default - *None*. Function which will be executed. Note pass the function object here and not the executed object.
+* args - *arguments to the executable function* Default - *None*. These are arguments which will be passed to the executable function.
+* print_signature - *flag to determine if the signature will be printed towards the end* Default - *False*
+
+
+# Authors
 [@hiteshgulati](https://github.com/hiteshgulati)
 [My Blog](https://hiteshgulati.com)
 

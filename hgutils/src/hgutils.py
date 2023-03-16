@@ -1,5 +1,5 @@
 import time
-from datetime import timedelta, date, datetime
+from datetime import timedelta, datetime
 
 def daterange(start_date, end_date, inclusive=True):
     if inclusive:
@@ -126,23 +126,6 @@ class timer ():
         elif verbose==2:
             self._print_stopwatch_and_children(self.stopwatches,units=units)
 
-if __name__ == '__main__':
-    print("Yes")
-    t = timer("Testing timer")
-    time.sleep(2)
-    t.start("Exterior")
-    for i in range(4):
-        t.start("i="+str(i))
-        time.sleep(1)    
-        if i==2:
-            for j in range(5):
-                t.start("j="+str(j))
-                time.sleep(.04)
-                t.stop(print=True,verbose=1)
-        t.stop(print=True,verbose=1)
-    t.stop(print=True,verbose=1)
-    # t.print(verbose=2)
-
 
 class debugger():
     '''
@@ -212,3 +195,23 @@ class debugger():
             if print_signature:
                 print("By:\t", self.name)
                 print("@:\t",datetime.now())
+
+
+if __name__ == '__main__':
+    print("Yes")
+    t = timer("Testing timer")
+    time.sleep(2)
+    t.start("Exterior")
+    for i in range(4):
+        t.start("i="+str(i))
+        time.sleep(1)    
+        if i==2:
+            for j in range(5):
+                t.start("j="+str(j))
+                time.sleep(.04)
+                t.stop(print=True,verbose=1)
+        t.stop(print=True,verbose=1)
+    t.stop(print=True,verbose=1)
+    # t.print(verbose=2)
+
+
