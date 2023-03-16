@@ -6,7 +6,6 @@
 
 * Timer - A python class to measure and print execution time of python code running over loops and in series.
 * Debugger - A python class to add print and or executable statements within the code and execute only if debugger mode is on.
-* Currency formatter - A python function to convert numeric vales to currency format with 100/1000 comma separator
 
 # Timer
 This is a python class built to measure the execution time of python script. 
