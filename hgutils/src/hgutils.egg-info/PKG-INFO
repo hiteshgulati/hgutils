@@ -1,11 +1,8 @@
 Metadata-Version: 2.1
 Name: hgutils
-Version: 0.0.2
+Version: 0.0.3
 Summary: Utilities package while developing and implementing python tools
-Home-page: UNKNOWN
 Author: Hitesh Gulati
-License: UNKNOWN
-Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
@@ -20,11 +17,12 @@ License-File: LICENSE
 ## Current Features
 
 * Timer - A python class to measure and print execution time of python code running over loops and in series.
+* Debugger - A python class to add print and or executable statements within the code and execute only if debugger mode is on.
 
-## Timer
+# Timer
 This is a python class built to measure the execution time of python script. 
 
-#### Usage
+## Usage
 Install `hgutils` to begin using timer class
 
 ```
@@ -35,24 +33,24 @@ Import `hgutils` in the python project and initiate `timer` class by assigning i
 
 ```
 import hgutils
-hgt = hgutils.timer("My Revolutionary Project")
+stopwatch = hgutils.timer("My Revolutionary Project")
 ```
 
 Initiate the a new timer by calling `start` function and passing a name in argument. The new initiated timer will be child to current timer, which means current timer will continue to run and a new sub timer will be initiated.
 
 ```
-hgt.start('New Timer')
+stopwatch.start('New Timer')
 ```
 
 To stop or end current timer simply call `stop` function. This function will end current timer, any parent timer(s) will keep on running. To end stop parent timer call the stop function again.
 
 ```
-hgt.stop()
+stopwatch.stop()
 ```
 
 To get status of timers use `print` function. 
 ```
-hgt.print()
+stopwatch.print()
 ```
 
 `print` functions have following arguments to fine tune the required details:
@@ -64,16 +62,16 @@ hgt.print()
 
 Status of timer can also be printed while stoping the timer by passing argument `print=True` in `stop` function.
 ```
-hgt.stop(print=True,verbose=1)
+stopwatch.stop(print=True,verbose=1)
 ```
 
 To reset the timer use `reset` function. This will delete all existing timers and initiate a new timer for project.
 
 ```
-hgt.reset()
+stopwatch.reset()
 ```
 
-#### Examples
+## Examples
 
 Here's a sample python project implemented using timer utility.
 
@@ -82,20 +80,20 @@ import hgutils
 import time
 
 print("Using timer utility available in hgutils")
-hgt = hgdatetime.timer("hgutils timer sample project")
+stopwatch = hgutils.timer("hgutils timer sample project")
 time.sleep(2)
-hgt.start("Top Level Timer")
+stopwatch.start("Top Level Timer")
 for i in range(4):
-    hgt.start("i="+str(i))
+    stopwatch.start("i="+str(i))
     time.sleep(1)    
     if i==2:
         for j in range(5):
-            hgt.start("j="+str(j))
+            stopwatch.start("j="+str(j))
             time.sleep(.04)
-            hgt.stop(print=True,verbose=1)
-    hgt.stop(print=True,verbose=1)
-hgt.stop(print=True,verbose=1)
-hgt.print(verbose=2)
+            stopwatch.stop(print=True,verbose=1)
+    stopwatch.stop(print=True,verbose=1)
+stopwatch.stop(print=True,verbose=1)
+stopwatch.print(verbose=2)
 ```
 
 **Output**
@@ -134,9 +132,45 @@ Using timer utility available in hgutils
 		 i=3 - 1.01 seconds
 ```
 
-## Authors
+# Debugger
+This is A python class to add print and or executable statements within the code and execute only if debugger mode is on.
+
+## Usage
+Install `hgutils` to begin using timer class
+
+```
+$ pip install hgutils
+```
+
+Import `hgutils` in the python project and initiate `debugger` class by assigning it to a variable while passing the project name in argument.
+
+```
+import hgutils
+dbug = hgutils.debugger("My Revolutionary Project's Debugger")
+```
+
+Set debugging mode ON by calling `debugging_on` function and turn it OFF by calling `debugging_off` function. By default debugging mode is OFF.
+
+```
+dbug.debugging_on()
+dbug.debugging_off()
+```
+
+Use `execute()` function to add printable / executable statements. These will be active only when debugger mode is ON. 
+
+```
+dbug.execute(title='Statement Title', print='This will be printed if debugger mode is ON')
+```
+`execute` functions have following arguments to be used as per requirements:
+* title - *title for current execution* Default - *None*. This is the first line which will be printed when statement is executed in debugger mode ON. If *None* nothing will be printed.
+* print - *Statement to be printed* Default - *None*. Statement which will be printed after printing title.
+* execute - *function to be executed* Default - *None*. Function which will be executed. Note pass the function object here and not the executed object.
+* args - *arguments to the executable function* Default - *None*. These are arguments which will be passed to the executable function.
+* print_signature - *flag to determine if the signature will be printed towards the end* Default - *False*
+
+
+# Authors
 [@hiteshgulati](https://github.com/hiteshgulati)
+
 [My Blog](https://hiteshgulati.com)
-
-
 
